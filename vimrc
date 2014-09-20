@@ -1,7 +1,7 @@
 " autocmd BufWritePre * :%s/\s\+$//e
 " autocmd BufWritePost ~/bootstrap/dotfiles/vimrc source %
 
-nnoremap <leader>F :%s/\s\+$//e<cr>
+" nnoremap <leader>F :%s/\s\+$//e<cr>
 
 " Env ------------------------------------------------------------ {{{
 
@@ -143,6 +143,7 @@ let g:ctrlp_map = '<leader>a'
 
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>ts :NERDTreeToggle<cr>
+let NERDTreeIgnore=['\.pyc$']
 
 Plug 'Lokaltog/vim-easymotion'
 map <Space>w <Plug>(easymotion-w)
@@ -164,6 +165,8 @@ let g:VtrStripLeadingWhitespace = 0
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+
+Plug 'scrooloose/syntastic'
 
 " Plug 'tpope/vim-classpath'
 Plug 'guns/vim-clojure-static'
