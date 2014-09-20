@@ -1,0 +1,15 @@
+snippet ns
+    (ns ${1:namespace}
+      ${2:req})${3}
+
+snippet req
+    (:require [${1:namespace}]${2})${3}
+
+snippet defn
+    (defn ${1:name}
+      "${2:doc}"
+      [${3:args}]
+      ${4:body})${5}
+
+snippet pl
+    (println ${1:exprs})${2}

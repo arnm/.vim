@@ -177,7 +177,15 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#popup_select_first = 0
 
-" Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet.vim'
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+let g:neosnippet#enable_snipmate_compatibility=1
+
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+
 Plug 'Shougo/neocomplete.vim'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
@@ -185,8 +193,8 @@ let g:neocomplete#sources#syntax#min_keyword_length = 1
 let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#force_overwrite_completefunc = 1
 
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = "<c-n>"
+" Plug 'ervandew/supertab'
+" let g:SuperTabDefaultCompletionType = "<c-n>"
 
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-commentary'
