@@ -156,7 +156,6 @@ Plug 'scrooloose/syntastic'
 
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
-Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-fireplace'
 
 Plug 'davidhalter/jedi-vim'
