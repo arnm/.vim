@@ -1,8 +1,6 @@
 " autocmd BufWritePre * :%s/\s\+$//e
 " autocmd BufWritePost ~/bootstrap/dotfiles/vimrc source %
 
-" nnoremap <leader>F :%s/\s\+$//e<cr>
-
 " Env ------------------------------------------------------------ {{{
 
 set shell=/bin/bash
@@ -118,18 +116,6 @@ nnoremap <leader>h :help<Space>
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'arnm/vim-tomorrow-theme'
-
-Plug 'kien/rainbow_parentheses.vim'
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBrace
-
-Plug 'bling/vim-airline'
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "powerlineish"
-
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 nnoremap <leader>gs :Gstatus<cr>
@@ -168,8 +154,9 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'scrooloose/syntastic'
 
-" Plug 'tpope/vim-classpath'
 Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-classpath'
 Plug 'tpope/vim-fireplace'
 
 Plug 'davidhalter/jedi-vim'
@@ -193,12 +180,24 @@ let g:neocomplete#sources#syntax#min_keyword_length = 1
 let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#force_overwrite_completefunc = 1
 
-" Plug 'ervandew/supertab'
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-
-Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+
+Plug 'arnm/vim-tomorrow-theme'
+
+" Plug 'amdt/vim-niji'
+Plug 'kien/rainbow_parentheses.vim'
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/xterm-color-table.vim'
+
+Plug 'bling/vim-airline'
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "powerlineish"
 
 call plug#end()
 
