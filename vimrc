@@ -154,8 +154,8 @@ Plug 'plasticboy/vim-markdown'
 
 Plug 'scrooloose/syntastic'
 
-Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-sexp'
+Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
 
 Plug 'davidhalter/jedi-vim'
@@ -182,17 +182,18 @@ let g:neocomplete#force_overwrite_completefunc = 1
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
+Plug 'arnm/vim-colors-solarized'
 Plug 'arnm/vim-tomorrow-theme'
 
-" Plug 'amdt/vim-niji'
+Plug 'amdt/vim-niji'
 Plug 'kien/rainbow_parentheses.vim'
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/xterm-color-table.vim'
+" Plug 'guns/vim-clojure-highlight'
+" Plug 'guns/xterm-color-table.vim'
 
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
@@ -221,6 +222,7 @@ set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set fillchars=diff:⣿,vert:│
 set showbreak=↪
 
-colorscheme Tomorrow-Night-Bright
+set background=dark
+colorscheme solarized
 
 " }}}
