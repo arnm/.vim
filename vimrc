@@ -163,6 +163,8 @@ let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#popup_select_first = 0
 
+Plug 'Chiel92/vim-autoformat'
+
 Plug 'Shougo/neosnippet.vim'
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 let g:neosnippet#enable_snipmate_compatibility=1
@@ -185,15 +187,10 @@ Plug 'tpope/vim-surround'
 Plug 'arnm/vim-colors-solarized'
 Plug 'arnm/vim-tomorrow-theme'
 
-Plug 'amdt/vim-niji'
-Plug 'kien/rainbow_parentheses.vim'
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+Plug 'luochen1990/rainbow'
+let g:rainbow_active = 1 
 
-" Plug 'guns/vim-clojure-highlight'
-" Plug 'guns/xterm-color-table.vim'
+Plug 'guns/xterm-color-table.vim'
 
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
