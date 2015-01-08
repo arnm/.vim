@@ -1,4 +1,4 @@
-" autocmd BufWritePre * :%s/\s\+$//e
+autocmd BufWritePre * :%s/\s\+$//e
 " autocmd BufWritePost ~/bootstrap/dotfiles/vimrc source %
 
 " Env ------------------------------------------------------------ {{{
@@ -28,7 +28,7 @@ set laststatus=2
 set ttimeoutlen=50
 
 set mouse=a
-set clipboard=unnamed
+set clipboard="
 
 set foldmethod=marker
 set foldlevelstart=0
@@ -58,9 +58,8 @@ set autoindent
 set smarttab
 set expandtab
 
-set tabstop=4
-set shiftwidth=4
-
+set tabstop=2
+set shiftwidth=2
 " }}}
 
 " Search --------------------------------------------------------- {{{
@@ -131,6 +130,8 @@ Plug 'scrooloose/nerdtree'
 nnoremap <leader>ts :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pyc$']
 
+Plug 'rking/ag.vim'
+
 Plug 'Lokaltog/vim-easymotion'
 map <Space>w <Plug>(easymotion-w)
 map <Space>s <Plug>(easymotion-s)
@@ -184,11 +185,14 @@ let g:neocomplete#force_overwrite_completefunc = 1
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
+Plug 'vim-scripts/utl.vim'
+let g:utl_cfg_hdl_scm_http_system = "silent !open -a 'Google Chrome' '%u#%f'"
+
 Plug 'arnm/vim-colors-solarized'
 Plug 'arnm/vim-tomorrow-theme'
 
 Plug 'luochen1990/rainbow'
-let g:rainbow_active = 1 
+let g:rainbow_active = 1
 
 Plug 'guns/xterm-color-table.vim'
 
