@@ -2,7 +2,7 @@
 
 echo "Cloning .vim"
 
-git clone https://github.com/arnm/.vim ~/.vim
+git clone git@github.com:arnm/.vim.git  ~/.vim
 
 echo "Downloading vim-plug"
 
