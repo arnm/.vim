@@ -103,7 +103,8 @@ nnoremap <leader>e :
 nnoremap <leader>R :source %<cr>
 nnoremap <leader>s :split<cr>
 nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>c :quit<cr>
+nnoremap <leader>c :q<cr>
+nnoremap <leader>C :q!<cr>
 nnoremap <leader>q :qa<cr>
 nnoremap <leader>Q :qa!<cr>
 nnoremap <leader>w :w<cr>
@@ -123,14 +124,24 @@ nnoremap <leader>gw :Gwrite<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gp :Gpush<cr>
 
-Plug 'kien/ctrlp.vim'
-let g:ctrlp_map = '<leader>a'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/unite.vim'
+let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_source_history_yank_enable=1
+let g:unite_prompt='» '
+let g:unite_split_rule = 'botright'
+if executable('ag')
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --line-numbers --nogroup --column'
+  let g:unite_source_grep_recursive_opt=''
+endif
+nnoremap <leader>a :Unite file_rec/async -auto-resize -start-insert -buffer-name=files<cr>
+nnoremap <leader>b :Unite buffer -auto-resize -buffer-name=buffers<cr>
+nnoremap <leader>g :Unite grep:. -no-quit -buffer-name=search<cr>
 
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>ts :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pyc$']
-
-Plug 'rking/ag.vim'
 
 Plug 'Lokaltog/vim-easymotion'
 map <Space>w <Plug>(easymotion-w)
@@ -149,6 +160,8 @@ nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
 
 Plug 'christoomey/vim-tmux-runner'
 let g:VtrStripLeadingWhitespace = 0
+nnoremap <C-f> :VtrSendLineToRunner<cr>
+vnoremap <C-f> :VtrSendLinesToRunner<cr>
 
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -156,10 +169,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/syntastic'
 
 Plug 'guns/vim-sexp'
-Plug 'guns/vim-clojure-static'
-Plug 'tpope/vim-fireplace'
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#popup_select_first = 0
@@ -169,7 +182,6 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'Shougo/neosnippet.vim'
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 let g:neosnippet#enable_snipmate_compatibility=1
-
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
@@ -188,8 +200,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/utl.vim'
 let g:utl_cfg_hdl_scm_http_system = "silent !open -a 'Google Chrome' '%u#%f'"
 
-Plug 'arnm/vim-colors-solarized'
-Plug 'arnm/vim-tomorrow-theme'
+Plug 'chriskempson/base16-vim'
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
@@ -199,6 +210,7 @@ Plug 'guns/xterm-color-table.vim'
 Plug 'bling/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline_theme = "powerlineish"
+let g:airline#extensions#tabline#enabled = 1
 
 call plug#end()
 
@@ -224,6 +236,7 @@ set fillchars=diff:⣿,vert:│
 set showbreak=↪
 
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+colorscheme base16-default
 
 " }}}

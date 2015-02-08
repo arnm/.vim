@@ -1,3 +1,4 @@
+.cache/
 autoload/
 plugged/
 *.netrwhist
