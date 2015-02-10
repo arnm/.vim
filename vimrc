@@ -136,8 +136,16 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt=''
 endif
 nnoremap <leader>a :Unite file_rec/async -auto-resize -start-insert -buffer-name=files<cr>
-nnoremap <leader>b :Unite buffer -auto-resize -buffer-name=buffers<cr>
+nnoremap <leader>b :Unite buffer -auto-resize -start-insert -buffer-name=buffers<cr>
 nnoremap <leader>g :Unite grep:. -no-quit -buffer-name=search<cr>
+
+autocmd FileType unite call s:unite_my_settings()
+function s:unite_my_settings()
+  noremap <buffer> j h
+  noremap <buffer> k j
+  noremap <buffer> l k
+  noremap <buffer> ; l
+endfunction
 
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>ts :NERDTreeToggle<cr>
