@@ -139,8 +139,8 @@ nnoremap <leader>a :Unite file_rec/async -auto-resize -start-insert -buffer-name
 nnoremap <leader>b :Unite buffer -auto-resize -start-insert -buffer-name=buffers<cr>
 nnoremap <leader>g :Unite grep:. -no-quit -buffer-name=search<cr>
 
-autocmd FileType unite call s:unite_my_settings()
-function s:unite_my_settings()
+autocmd FileType unite call s:unite_overrides()
+function s:unite_overrides()
   noremap <buffer> j h
   noremap <buffer> k j
   noremap <buffer> l k
@@ -208,7 +208,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/utl.vim'
 let g:utl_cfg_hdl_scm_http_system = "silent !open -a 'Google Chrome' '%u#%f'"
 
-Plug 'chriskempson/base16-vim'
+Plug 'arnm/base16-vim'
 
 Plug 'luochen1990/rainbow'
 let g:rainbow_active = 1
