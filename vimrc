@@ -86,7 +86,8 @@ nnoremap zk zj
 nnoremap zl zk
 
 inoremap jk <esc>
-inoremap kj <esc>
+inoremap <c-e> <esc>A
+inoremap <c-a> <esc>I
 
 " retain selection when indenting
 vnoremap < <gv
@@ -115,6 +116,14 @@ nnoremap <leader>h :help<Space>
 " Plugins -------------------------------------------------------- {{{
 
 call plug#begin('~/.vim/plugged')
+
+Plug 'rking/ag.vim'
+Plug 'cespare/vim-toml'
+
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
+Plug 'mxw/vim-jsx'
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -149,6 +158,7 @@ endfunction
 
 Plug 'scrooloose/nerdtree'
 nnoremap <leader>ts :NERDTreeToggle<cr>
+let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$']
 
 Plug 'Lokaltog/vim-easymotion'
@@ -175,17 +185,30 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 Plug 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['jsxhint']
 
 Plug 'guns/vim-sexp'
 Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'kana/vim-smartinput'
+
+Plug 'wting/rust.vim'
+Plug 'phildawes/racer', {'do' : 'cargo build --release' }
+let g:racer_cmd = "~/.vim/plugged/racer/target/release/racer"
+let $RUST_SRC_PATH="/Users/alexei/Dev/rust/rust-lang/src"
 
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 let g:jedi#auto_vim_configuration = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#popup_select_first = 0
 
+Plug 'raichoo/haskell-vim'
+" Plug 'lukerandall/haskellmode-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
+
 Plug 'Chiel92/vim-autoformat'
+nnoremap <leader>f :Au<cr>
 
 Plug 'Shougo/neosnippet.vim'
 let g:neosnippet#snippets_directory='~/.vim/snippets'
@@ -200,9 +223,18 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 1
 let g:neocomplete#enable_auto_select = 0
-let g:neocomplete#force_overwrite_completefunc = 1
 
+" if patter matches, local omnifunc will be called
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+
+let g:neocomplete#sources#omni#input_patterns.rust =
+      \ '[^.[:digit:] *\t]\%(\.\|\::\)\%(\h\w*\)\?'
+
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 Plug 'vim-scripts/utl.vim'
@@ -239,12 +271,12 @@ set relativenumber
 set number
 
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮
 set fillchars=diff:⣿,vert:│
 set showbreak=↪
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-default
+colorscheme base16-tomorrow
 
 " }}}
