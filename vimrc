@@ -18,6 +18,8 @@ set noswapfile
 
 " Behavior ------------------------------------------------------- {{{
 
+set hidden
+
 set encoding=utf-8
 set ttyfast
 set lazyredraw
@@ -26,6 +28,11 @@ set splitright
 set modelines=0
 set laststatus=2
 set ttimeoutlen=50
+
+" Save when focus is lost
+au FocusLost * :wa
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
 
 set mouse=a
 set clipboard="
@@ -77,11 +84,13 @@ set smartcase
 
 " Global Maps ---------------------------------------------------- {{{
 
+" Movement
 noremap j h
 noremap k j
 noremap l k
 noremap ; l
 
+" Cycle folds
 nnoremap zk zj
 nnoremap zl zk
 
@@ -93,13 +102,23 @@ inoremap <c-a> <esc>I
 vnoremap < <gv
 vnoremap > >gv
 
+" format block of text
 vnoremap F gq
 nnoremap F gqap
 
-nmap <Tab> :tabnext<cr>
-nmap <S-Tab> :tabprevious<cr>
+" Keep search matches in the middle of the window.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"Don't move to next match on *
+nnoremap * *<c-o>
+
+" Cycle buffers
+nnoremap <Tab> :bnext<cr>
+nnoremap <S-Tab> :bprevious<cr>
 
 let mapleader = ','
+let maplocalleader = '\\'
 nnoremap <leader>e :
 nnoremap <leader>R :source %<cr>
 nnoremap <leader>s :split<cr>
@@ -110,6 +129,7 @@ nnoremap <leader>q :qa<cr>
 nnoremap <leader>Q :qa!<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>h :help<Space>
+nnoremap <leader><space> :noh<cr>:call clearmatches()<cr>
 
 " }}}
 
@@ -123,7 +143,7 @@ Plug 'cespare/vim-toml'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim', { 'do': 'npm install' }
-Plug 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx', {'do': 'npm install -g jsxhint' }
 
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -193,9 +213,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'kana/vim-smartinput'
 
 Plug 'wting/rust.vim'
-Plug 'phildawes/racer', {'do' : 'cargo build --release' }
-let g:racer_cmd = "~/.vim/plugged/racer/target/release/racer"
-let $RUST_SRC_PATH="/Users/alexei/Dev/rust/rust-lang/src"
+Plug 'phildawes/racer', {'do' : 'cargo build --release && git clone https://github.com/rust-lang/rust.git' }
+let g:racer_cmd = '~/.vim/plugged/racer/target/release/racer'
+let $RUST_SRC_PATH= $HOME . '/.vim/plugged/racer/rust/src/'
 
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 let g:jedi#auto_vim_configuration = 0
@@ -252,6 +272,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = "powerlineish"
 let g:airline#extensions#tabline#enabled = 1
 
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim', { 'do': 'git config --global github.user arnm' }
+let g:gist_detect_filetype = 1
+
 call plug#end()
 
 "  }}}
@@ -277,6 +301,6 @@ set showbreak=↪
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-tomorrow
+colorscheme base16-eighties
 
 " }}}
