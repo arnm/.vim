@@ -1,0 +1,96 @@
+snippet const
+  const ${1:var}: ${2:type} = ${3:val};${4}
+
+snippet assert!
+  assert!(${1:cond})${2}
+
+snippet println!
+  println!("${1:message}"${2:values});${3}
+
+snippet Err
+  Err(${1})${2}
+
+snippet Ok
+  Ok(${1:result})${2}
+
+snippet Some
+  Some(${1})${2}
+
+snippet impl
+  impl ${1:Type} {
+    ${2}
+  }
+
+snippet fn
+  fn ${1:name}(${2}) ${3}{
+    ${4}
+  }
+
+snippet match
+  match ${1} {
+    ${2}
+  }
+
+snippet main
+  fn main() {
+    ${1}
+  }
+
+snippet type
+  type ${1} = ${2}
+
+snippet struct-tuple
+  struct ${1:Name}(${2})${3}
+
+snippet struct
+  struct ${1:Name} {
+    ${2}
+  }
+
+snippet trait
+  trait ${1} {
+    ${2}
+  }
+
+snippet enum
+  enum ${1:Name} {
+    ${2:variant}
+  }
+
+snippet for
+  for ${1} {
+    ${2}
+  }
+
+snippet loop
+  loop {
+    ${1}
+  }
+
+snippet while
+  while ${1} {
+    ${2}
+  }
+
+snippet test
+  #[test]
+  fn ${1:name}() {
+    ${2}
+  }
+
+snippet extern
+  extern crate ${1:name};${2}
+
+snippet use
+  use ${1:name};${2}
+
+snippet let
+  let ${1:name} = ${2};${3}
+
+snippet letm
+  let mut ${1:name} = ${2};${3}
+
+snippet if
+  if ${1:cond} {
+    ${2}
+  }
