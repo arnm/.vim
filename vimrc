@@ -80,6 +80,21 @@ set smartcase
 
 " Functions ------------------------------------------------------ {{{
 
+" Prepare display for TMUX copy
+function BareDisplay()
+  set nolist
+  set norelativenumber
+  set nonumber
+  GitGutterDisable
+endfunction
+
+" Restore display
+function NormalDisplay()
+  set list
+  set relativenumber
+  GitGutterEnable
+endfunction
+
 " }}}
 
 " Global Maps ---------------------------------------------------- {{{
@@ -123,6 +138,7 @@ nnoremap <leader>e :
 nnoremap <leader>R :source %<cr>
 nnoremap <leader>s :split<cr>
 nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>d :bd<cr>
 nnoremap <leader>c :q<cr>
 nnoremap <leader>C :q!<cr>
 nnoremap <leader>q :qa<cr>
@@ -301,6 +317,6 @@ set showbreak=↪
 
 set background=dark
 let base16colorspace=256
-colorscheme base16-eighties
+colorscheme base16-ocean
 
 " }}}
